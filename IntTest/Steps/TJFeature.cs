@@ -1,7 +1,5 @@
 ﻿namespace IntTest.Steps
 {
-    using System.Drawing.Text;
-    using System.Runtime.Remoting.Contexts;
     using IntTest.Pages;
     using NUnit.Framework;
     using TechTalk.SpecFlow;

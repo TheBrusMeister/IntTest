@@ -1,19 +1,11 @@
 ﻿namespace IntTest.Pages
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using NUnit.Framework;
 
     using OpenQA.Selenium;
-    using OpenQA.Selenium.Interactions;
     using OpenQA.Selenium.Support.UI;
 
-    using TechTalk.SpecFlow;
-    using TechTalk.SpecFlow.Tracing;
-
     using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
-    using TestContext = NUnit.Framework.TestContext;
 
     class PageBase
     {

@@ -1,10 +1,5 @@
 ﻿namespace IntTest.Pages
 {
-    using System.IO;
-    using System.Net.NetworkInformation;
-
-    using NUnit.Framework;
-
     internal class TJHomePage : PageBase
     {
         public TJHomePage(PageContext context) : base(context)

@@ -1,7 +1,5 @@
 ﻿namespace IntTest.Hooks
 {
-    using System.Threading.Tasks;
-
     using TechTalk.SpecFlow;
 
     [Binding]
