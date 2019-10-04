@@ -39,38 +39,24 @@ namespace IntTest.Pages
                 case SearchType.Refine:
                     WaitForElementToBeClickableCSSSelector(CSSAttribute.RefineSearchKeywordInput);
 
-                    //keyword only and default radius
                     if (search.Keyword != string.Empty && search.Location == string.Empty && search.Radius == null)
                     {
-                        ClearAndEnterTextCSSSelector(CSSAttribute.RefineSearchKeywordInput, search.Keyword);
-                        WaitForElementToBeClickableId(IdAttribute.UpdateKeywordsButton);
-                        ClickButton(IdAttribute.UpdateKeywordsButton);
+                        KeywordOnlyRefineSearch(search.Keyword);
                     }
 
-                    //location only search default radius
                     if (search.Keyword == string.Empty &&  search.Location != string.Empty && search.Radius == null)
                     {
-                        ClearAndEnterTextCSSSelector(CSSAttribute.RefineSearchLocationInput, search.Location);
-                        WaitForElementToBeClickableId(IdAttribute.UpdateLocationButton);
-                        ClickButton(IdAttribute.UpdateLocationButton);
+                        LocationRefineSearch(search.Location);
                     }
 
                     if (search.Keyword != string.Empty && search.Location != string.Empty && search.Radius == null)
                     {
-                        ClearAndEnterTextCSSSelector(CSSAttribute.RefineSearchKeywordInput, search.Keyword);
-                        ClearAndEnterTextCSSSelector(CSSAttribute.RefineSearchLocationInput, search.Location);
-                        WaitForElementToBeClickableId(IdAttribute.UpdateLocationButton);
-                        ClickButton(IdAttribute.UpdateLocationButton);
+                        KeywordLocationRefineSearch(search.Keyword, search.Location);
                     }
 
                     if (search.Location != string.Empty && search.Keyword == string.Empty && search.Radius != null)
                     {
-                        //location refine search -- make into function
-                        ClearAndEnterTextCSSSelector(CSSAttribute.RefineSearchLocationInput, search.Location);
-                        WaitForElementToBeClickableId(IdAttribute.UpdateLocationButton);
-                        ClickButton(IdAttribute.UpdateLocationButton);
-                        WaitForElementToBeClickableCSSSelector(FormRefineRadiusSelector(radiusVal));
-                        ClickRefineSearchRadius(search.Radius);
+                        RefineSearchWithSalary(search.Location, radiusVal, search.Radius);
                     }
                     break;
 
@@ -80,7 +66,36 @@ namespace IntTest.Pages
             
         }
 
-        public void ClickRefineSearchRadius(Radius? radius)
+        public void KeywordOnlyRefineSearch(string keyword)
+        {
+            ClearAndEnterTextCSSSelector(CSSAttribute.RefineSearchKeywordInput, keyword);
+            WaitForElementToBeClickableId(IdAttribute.UpdateKeywordsButton);
+            ClickButton(IdAttribute.UpdateKeywordsButton);
+        }
+
+        private void LocationRefineSearch(string location)
+        {
+            ClearAndEnterTextCSSSelector(CSSAttribute.RefineSearchLocationInput, location);
+            WaitForElementToBeClickableId(IdAttribute.UpdateLocationButton);
+            ClickButton(IdAttribute.UpdateLocationButton);
+        }
+
+        private void KeywordLocationRefineSearch(string keyword, string location)
+        {
+            ClearAndEnterTextCSSSelector(CSSAttribute.RefineSearchKeywordInput, keyword);
+            ClearAndEnterTextCSSSelector(CSSAttribute.RefineSearchLocationInput, location);
+            WaitForElementToBeClickableId(IdAttribute.UpdateLocationButton);
+            ClickButton(IdAttribute.UpdateLocationButton);
+        }
+
+        private void RefineSearchWithSalary(string location, int? radius, Radius? radiusEnum)
+        {
+            LocationRefineSearch(location);
+            WaitForElementToBeClickableCSSSelector(FormRefineRadiusSelector(radius));
+            ClickRefineSearchRadius(radiusEnum);
+        }
+
+        private void ClickRefineSearchRadius(Radius? radius)
         {
             var radiusVal = (int) radius;
             
