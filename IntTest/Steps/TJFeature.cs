@@ -1,6 +1,6 @@
 ﻿namespace IntTest.Steps
 {
-    using IntTest.Pages;
+    using Pages;
     using NUnit.Framework;
     using TechTalk.SpecFlow;
 
@@ -31,8 +31,8 @@
         [When(@"I make a search with details (.*), (.*), (.*)")]
         public void WhenIMakeASearchWithDetails(string role, string location, string radius)
         {
-            this.ClearAndEnterText(TJHomePage.IdAttribute.positionTxt, role);
-            this.ClearAndEnterText(TJHomePage.IdAttribute.locationTxt, location);
+            this.ClearAndEnterTextId(TJHomePage.IdAttribute.positionTxt, role);
+            this.ClearAndEnterTextId(TJHomePage.IdAttribute.locationTxt, location);
             this.SelectTextFromDropdown(TJHomePage.IdAttribute.distanceDdl, radius);
             
         }

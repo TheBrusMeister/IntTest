@@ -14,6 +14,7 @@
         {
             Driver = new ChromeDriver();
             Driver.Navigate().GoToUrl("https://www.google.co.uk");
+            Driver.Manage().Window.Maximize();
         }
     }
 }

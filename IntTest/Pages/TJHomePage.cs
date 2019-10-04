@@ -10,7 +10,7 @@
         public void MoreOptions(string salary, string salaryAmount, string jobType, string recruiterType)
         {
             this.ClickButton(IdAttribute.moreOptionsToggle);
-            this.WaitForElementToBeClickable(IdAttribute.allSalaries);
+            this.WaitForElementToBeClickableId(IdAttribute.allSalaries);
 
             switch (salary)
             {
